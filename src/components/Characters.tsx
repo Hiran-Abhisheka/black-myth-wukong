@@ -140,7 +140,7 @@ export const Characters: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
-    <section ref={ref} className="relative w-full section-padding bg-gradient-to-b from-obsidian-900 to-obsidian-800">
+    <section ref={ref} id="characters" className="relative w-full section-padding bg-gradient-to-b from-obsidian-900 to-obsidian-800">
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gold-900/10 rounded-full blur-3xl" />

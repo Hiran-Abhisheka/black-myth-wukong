@@ -50,7 +50,7 @@ export const Gallery: React.FC = () => {
   };
 
   return (
-    <section ref={ref} className="relative w-full section-padding bg-obsidian-900">
+    <section ref={ref} id="gallery" className="relative w-full section-padding bg-obsidian-900">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gold-900/5 rounded-full blur-3xl" />

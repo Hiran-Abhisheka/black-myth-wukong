@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
+import { useInView } from '../hooks';
 
 export const Hero: React.FC = () => {
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
   useEffect(() => {
     // Floating animation for background glow
     gsap.to('.hero-glow', {
@@ -44,7 +46,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center overflow-hidden pt-20">
+    <section ref={ref} className="relative w-full h-screen flex items-center overflow-hidden pt-20">
       {/* Video Background - Fixed */}
       <video
         autoPlay
@@ -90,18 +92,15 @@ export const Hero: React.FC = () => {
       <motion.div 
         className="relative z-10 px-4 sm:px-6 lg:px-12 max-w-3xl w-full ml-0 lg:ml-20"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
         {/* Decorative Asian element */}
         <motion.div
           className="mb-8 flex items-center gap-3 slide-in-left"
           initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          onAnimationComplete={() => {
-            // Start pulse animation after initial entrance
-          }}
         >
           <motion.div 
             className="w-16 h-1 bg-gradient-to-r from-gold-500 via-gold-400 to-transparent"
@@ -121,7 +120,7 @@ export const Hero: React.FC = () => {
         <motion.h1 
           className="hero-title font-cinzel text-6xl sm:text-7xl lg:text-8xl font-black text-gold-400 mb-2 leading-tight uppercase tracking-wider"
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1.2, ease: [0.33, 0.66, 0.66, 1], delay: 0.8 }}
         >
           WUKONG'S
@@ -129,7 +128,7 @@ export const Hero: React.FC = () => {
         <motion.h2 
           className="hero-title cinematic-glitch font-cinzel text-6xl sm:text-7xl lg:text-8xl font-black text-gold-300 mb-12 leading-tight uppercase tracking-wider"
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1.2, ease: [0.33, 0.66, 0.66, 1], delay: 1.1 }}
         >
           LEGEND
@@ -139,7 +138,7 @@ export const Hero: React.FC = () => {
         <motion.p 
           className="hero-subtitle font-serif text-lg sm:text-xl text-gold-200 mb-12 max-w-2xl leading-relaxed opacity-95"
           initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
           transition={{ duration: 0.9, ease: [0.33, 0.66, 0.66, 1], delay: 1.5 }}
         >
           Journey through ancient realms and conquer mythical demons in this epic tale of power and redemption
@@ -149,7 +148,7 @@ export const Hero: React.FC = () => {
         <motion.div 
           className="hero-buttons flex flex-col sm:flex-row gap-8"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.9, ease: [0.33, 0.66, 0.66, 1], delay: 1.9 }}
         >
           {/* Play Now Button */}

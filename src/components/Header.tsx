@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Determine if scrolling down
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsScrollingDown(true);
+      } else {
+        setIsScrollingDown(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+      setIsScrolled(currentScrollY > 50);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (currentScrollY / docHeight) * 100 : 0;
+      setScrollPercent(percent);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navLinks = [
     { label: 'Home', href: '#' },
@@ -23,15 +40,36 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <motion.header
+    <>
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 to-gold-600 z-50"
+        style={{
+          scaleX: scrollYProgress,
+          transformOrigin: '0%',
+        }}
+      />
+
+      {/* Scroll Percentage */}
+      <motion.div
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full border-2 border-gold-400 flex items-center justify-center backdrop-blur-sm bg-obsidian-900/20"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
+        <span className="text-gold-400 font-cinzel text-sm font-bold tracking-wider">
+          {Math.round(scrollPercent)}%
+        </span>
+      </motion.div>
+
+      <motion.header
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-obsidian-900/95 backdrop-blur-lg border-b border-gold-900/30'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      animate={{ y: isScrollingDown ? -100 : 0 }}
+      transition={{ duration: 0.3 }}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -133,6 +171,7 @@ export const Header: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+      </motion.header>
+    </>
   );
 };

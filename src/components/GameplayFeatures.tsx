@@ -73,7 +73,7 @@ export const GameplayFeatures: React.FC = () => {
   };
 
   return (
-    <section ref={ref} className="relative w-full section-padding bg-obsidian-900">
+    <section ref={ref} id="features" className="relative w-full section-padding bg-obsidian-900">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
