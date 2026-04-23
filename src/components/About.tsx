@@ -73,11 +73,47 @@ export const About: React.FC = () => {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-gold-400 font-cinzel text-sm tracking-widest">Legend</span>
-              <div className="flex gap-3 text-gold-300 text-xs font-serif">
-                <span>Mythology</span>
-                <span>Combat</span>
-                <span>Journey</span>
+              <motion.span 
+                className="text-gold-500 font-cinzel text-sm tracking-widest px-3 py-1 rounded cursor-pointer"
+                whileHover={{ 
+                  backgroundColor: '#c49b3f',
+                  color: '#1a1613',
+                  transition: { duration: 0.2 }
+                }}
+              >
+                Legend
+              </motion.span>
+              <div className="flex gap-3 text-white text-xs font-serif">
+                <motion.span 
+                  className="px-2 py-1 rounded cursor-pointer"
+                  whileHover={{ 
+                    backgroundColor: '#c49b3f',
+                    color: '#1a1613',
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  Mythology
+                </motion.span>
+                <motion.span 
+                  className="px-2 py-1 rounded cursor-pointer"
+                  whileHover={{ 
+                    backgroundColor: '#c49b3f',
+                    color: '#1a1613',
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  Combat
+                </motion.span>
+                <motion.span 
+                  className="px-2 py-1 rounded cursor-pointer"
+                  whileHover={{ 
+                    backgroundColor: '#c49b3f',
+                    color: '#1a1613',
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  Journey
+                </motion.span>
               </div>
             </motion.div>
 
@@ -94,9 +130,17 @@ export const About: React.FC = () => {
                   {word.text.split('').map((char, charIdx) => (
                     <motion.span
                       key={charIdx}
-                      className="text-4xl sm:text-5xl lg:text-6xl font-cinzel font-black text-gold-300 uppercase"
+                      className={`text-4xl sm:text-5xl lg:text-6xl font-cinzel font-black uppercase px-2 rounded cursor-pointer ${
+                        word.text === 'Wukong' ? 'text-gold-500' : 'text-white'
+                      }`}
                       variants={charVariants}
                       custom={charIdx}
+                      whileHover={{ 
+                        backgroundColor: '#c49b3f',
+                        color: '#1a1613',
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
                     >
                       {char === ' ' ? '\u00A0' : char}
                     </motion.span>
@@ -107,7 +151,7 @@ export const About: React.FC = () => {
 
             {/* Description */}
             <motion.p
-              className="text-lg text-gold-200 max-w-md leading-relaxed font-serif"
+              className="text-lg text-white max-w-md leading-relaxed font-serif"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -132,13 +176,31 @@ export const About: React.FC = () => {
           >
             {/* Top Caption */}
             <motion.div
-              className="text-gold-400 text-sm font-serif"
+              className="text-gold-500 text-sm font-serif"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p>Epic battles await</p>
-              <p className="text-gold-300">in every realm</p>
+              <motion.p 
+                className="text-gold-500 px-2 py-1 rounded cursor-pointer w-fit"
+                whileHover={{ 
+                  backgroundColor: '#c49b3f',
+                  color: '#1a1613',
+                  transition: { duration: 0.2 }
+                }}
+              >
+                Epic battles await
+              </motion.p>
+              <motion.p 
+                className="text-white px-2 py-1 rounded cursor-pointer w-fit"
+                whileHover={{ 
+                  backgroundColor: '#c49b3f',
+                  color: '#1a1613',
+                  transition: { duration: 0.2 }
+                }}
+              >
+                in every realm
+              </motion.p>
             </motion.div>
 
             {/* Central Title Words */}
@@ -154,9 +216,17 @@ export const About: React.FC = () => {
                   {word.text.split('').map((char, charIdx) => (
                     <motion.span
                       key={charIdx}
-                      className="text-3xl sm:text-4xl lg:text-5xl font-cinzel font-black text-gold-300 uppercase"
+                      className={`text-3xl sm:text-4xl lg:text-5xl font-cinzel font-black uppercase px-2 rounded cursor-pointer ${
+                        word.text === 'Power' ? 'text-gold-500' : 'text-white'
+                      }`}
                       variants={charVariants}
                       custom={charIdx}
+                      whileHover={{ 
+                        backgroundColor: '#c49b3f',
+                        color: '#1a1613',
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
                     >
                       {char === ' ' ? '\u00A0' : char}
                     </motion.span>
@@ -167,10 +237,15 @@ export const About: React.FC = () => {
 
             {/* Bottom Badge */}
             <motion.span
-              className="text-gold-400 font-cinzel text-sm tracking-widest self-end"
+              className="text-white font-cinzel text-sm tracking-widest self-end px-3 py-1 rounded cursor-pointer"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ 
+                backgroundColor: '#c49b3f',
+                color: '#1a1613',
+                transition: { duration: 0.2 }
+              }}
             >
               Power
             </motion.span>

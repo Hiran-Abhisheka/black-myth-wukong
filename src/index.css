@@ -398,3 +398,21 @@ code {
   border-radius: 4px;
   color: #f5f1e8;
 }
+
+/* About Section Font Hover Styles */
+.about-char,
+.about-badge,
+.about-caption {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.about-char:hover,
+.about-badge:hover,
+.about-caption:hover {
+  background-color: #c49b3f;
+  color: #1a1613;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transform: scale(1.05);
+}

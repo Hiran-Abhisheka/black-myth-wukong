@@ -31,8 +31,11 @@ function App() {
 
     // Play music on user interaction (fallback for autoplay restrictions)
     const playMusic = () => {
-      if (audio && audio.paused) {
-        audio.play();
+      if (audio) {
+        audio.loop = true;
+        if (audio.paused) {
+          audio.play();
+        }
       }
     };
 

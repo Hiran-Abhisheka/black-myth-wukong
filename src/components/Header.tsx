@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,12 +77,11 @@ export const Header: React.FC = () => {
           className="flex items-center space-x-2 cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg flex items-center justify-center">
-            <span className="font-cinzel text-xl font-bold text-obsidian-900">W</span>
-          </div>
-          <span className="font-cinzel text-xl font-bold text-gold-400 hidden sm:inline">
-            Wukong
-          </span>
+          <img 
+            src="/Black-Myth-Wukong-Logo-White-Text-PNG.png" 
+            alt="Wukong Logo" 
+            className="h-12 w-auto object-contain"
+          />
         </motion.div>
 
         {/* Desktop Navigation */}
