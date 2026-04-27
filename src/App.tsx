@@ -3,7 +3,7 @@ import {
   Header,
   Hero,
   About,
-  Characters,
+  Stats,
   GameplayFeatures,
   Trailer,
   Gallery,
@@ -40,7 +40,10 @@ function App() {
     };
 
     document.addEventListener('click', playMusic);
-    return () => document.removeEventListener('click', playMusic);
+    
+    return () => {
+      document.removeEventListener('click', playMusic);
+    };
   }, []);
 
   return (
@@ -61,10 +64,13 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Characters />
+      
+      {/* All pages scroll vertically */}
+      <Stats />
       <GameplayFeatures />
       <Trailer />
       <Gallery />
+      
       <Footer />
     </div>
   );

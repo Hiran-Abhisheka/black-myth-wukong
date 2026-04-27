@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: '#' },
     { label: 'About', href: '#about' },
-    { label: 'Characters', href: '#characters' },
+    { label: 'Stats', href: '#stats' },
     { label: 'Features', href: '#features' },
     { label: 'Gallery', href: '#gallery' },
   ];

@@ -15,29 +15,8 @@ const characters: Character[] = [
     id: 1,
     name: 'Sun Wukong',
     title: 'The Monkey King',
-    description: 'Born from stone with immense power, wielding the legendary staff across realms.',
+    description: 'Born from stone with immense power, wielding the legendary staff across realms. The legendary Monkey King embarks on an epic journey filled with challenges, mysteries, and extraordinary power.',
     skills: ['Cloud Jump', 'Bone Cudgel', 'Immortal Body'],
-  },
-  {
-    id: 2,
-    name: 'Zhu Bajie',
-    title: 'The Pig Warrior',
-    description: 'A powerful demon turned ally, master of earth manipulation and combat prowess.',
-    skills: ['Earth Spike', 'Demon Strength', 'Tusks Attack'],
-  },
-  {
-    id: 3,
-    name: 'Tang Sanzang',
-    title: 'The Monk',
-    description: 'A holy monk on a sacred mission, blessed with divine protection and wisdom.',
-    skills: ['Divine Shield', 'Holy Light', 'Teleportation'],
-  },
-  {
-    id: 4,
-    name: 'Sha Wujing',
-    title: 'The Orc General',
-    description: 'A reformed demon warrior, master of the venom whip and ancient techniques.',
-    skills: ['Venom Whip', 'Demon Rage', 'Sand Storm'],
   },
 ];
 
@@ -137,10 +116,18 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character, index }) => {
 };
 
 export const Characters: React.FC = () => {
-  const [ref, inView] = useInView({ threshold: 0.2 });
+  const [scrollRef] = useInView({ threshold: 0.2, triggerOnce: false });
 
   return (
-    <section ref={ref} id="characters" className="relative w-full section-padding bg-gradient-to-b from-obsidian-900 to-obsidian-800">
+    <motion.section 
+      ref={scrollRef}
+      id="characters" 
+      className="relative w-full min-h-screen section-padding bg-gradient-to-b from-obsidian-900 to-obsidian-800 pointer-events-auto"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: false, amount: 0.2 }}
+    >
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gold-900/10 rounded-full blur-3xl" />
@@ -152,23 +139,26 @@ export const Characters: React.FC = () => {
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: false, amount: 0.3 }}
         >
-          <h2 className="section-title">Meet the Heroes</h2>
+          <h2 className="section-title">The Monkey King</h2>
           <p className="text-gold-300 text-lg max-w-2xl mx-auto">
-            Experience the legendary journey with memorable characters. Hover to explore their abilities.
+            Discover the legendary journey of Sun Wukong. Hover to explore his abilities.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto mt-6" />
         </motion.div>
 
-        {/* Characters Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {characters.map((character, index) => (
-            <CharacterCard key={character.id} character={character} index={index} />
-          ))}
+        {/* Single Character Card - Centered */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-md">
+            {characters.map((character, index) => (
+              <CharacterCard key={character.id} character={character} index={index} />
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
