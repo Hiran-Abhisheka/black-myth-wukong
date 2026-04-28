@@ -2,7 +2,7 @@
 
 A modern, dark-themed gaming website inspired by "Black Myth: Wukong" with stunning cinematic design and smooth animations.
 
-## � Live Demo
+## Live Demo
 
 **[Visit Live Demo](https://black-myth-wukong-mu.vercel.app/)** - Experience the website in action!
 
@@ -10,7 +10,7 @@ A modern, dark-themed gaming website inspired by "Black Myth: Wukong" with stunn
 
 ![Website Preview](https://i.postimg.cc/Ghv8Pxgp/Screenshot-2026-04-28-151544.png)
 
-## �🎮 Features
+## 🎮 Features
 
 - **Dark Fantasy Theme**: Black & gold color scheme with no neon colors
 - **Cinematic UI**: Minimal, elegant design with atmospheric effects
