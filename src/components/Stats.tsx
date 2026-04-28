@@ -109,10 +109,6 @@ export const Stats: React.FC = () => {
       ref={containerRef}
       id="stats"
       className="relative w-full min-h-screen section-padding bg-obsidian-900 pointer-events-auto overflow-hidden"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: false, amount: 0.2 }}
     >
       {/* Animated Decorative background - Minimal */}
       <div className="absolute inset-0 pointer-events-none">
