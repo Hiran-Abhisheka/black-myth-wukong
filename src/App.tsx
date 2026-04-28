@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Header,
   Hero,
@@ -7,11 +7,22 @@ import {
   GameplayFeatures,
   Gallery,
   Footer,
+  LoadingScreen,
 } from './components';
 import './index.css';
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loading screen after a delay to show content
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 second loading screen
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // Smooth scroll behavior is set in CSS, but we can add additional scroll effects here
@@ -47,6 +58,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-obsidian-900 text-gold-100">
+      {/* Loading Screen */}
+      <LoadingScreen isLoading={isLoading} />
+
       {/* Background Music */}
       <audio
         ref={audioRef}

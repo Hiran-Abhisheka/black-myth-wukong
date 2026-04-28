@@ -6,3 +6,4 @@ export { GameplayFeatures } from './GameplayFeatures';
 export { Trailer } from './Trailer';
 export { Gallery } from './Gallery';
 export { Footer } from './Footer';
+export { LoadingScreen } from './LoadingScreen';
