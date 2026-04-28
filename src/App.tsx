@@ -5,7 +5,6 @@ import {
   About,
   Stats,
   GameplayFeatures,
-  Trailer,
   Gallery,
   Footer,
 } from './components';
@@ -59,6 +58,10 @@ function App() {
       {/* Background elements */}
       <div className="hero-bg" />
       <div className="fog" />
+      <div className="ambient-light" />
+      <div className="bg-orb orb-1" />
+      <div className="bg-orb orb-2" />
+      <div className="bg-orb orb-3" />
 
       {/* Main content */}
       <Header />
@@ -68,7 +71,6 @@ function App() {
       {/* All pages scroll vertically */}
       <Stats />
       <GameplayFeatures />
-      <Trailer />
       <Gallery />
       
       <Footer />
