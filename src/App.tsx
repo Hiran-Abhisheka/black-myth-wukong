@@ -19,7 +19,7 @@ function App() {
     // Hide loading screen after a delay to show content
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 second loading screen
+    }, 3500); // 3.5 second loading screen
 
     return () => clearTimeout(timer);
   }, []);
@@ -78,7 +78,7 @@ function App() {
       <div className="bg-orb orb-3" />
 
       {/* Main content */}
-      <Header />
+      {!isLoading && <Header />}
       <Hero />
       <About />
       

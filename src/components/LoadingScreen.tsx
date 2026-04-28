@@ -27,8 +27,8 @@ export const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-32 h-32 flex items-center justify-center"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="w-48 h-48 flex items-center justify-center"
             >
               <img
                 src="/Black-Myth-Wukong-Logo-White-Text-PNG.png"
@@ -41,19 +41,19 @@ export const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
               className="text-center"
             >
-              <h1 className="text-2xl font-bold text-gold-400 mb-2">BlackMyth Wukong</h1>
-              <p className="text-gold-200 text-sm">Loading experience...</p>
+              <h1 className="text-4xl font-bold text-gold-400 mb-3">BlackMyth Wukong</h1>
+              <p className="text-gold-200 text-lg">Loading experience...</p>
             </motion.div>
 
             {/* Animated loading bar */}
             <motion.div
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 200 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="h-1 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 rounded-full overflow-hidden"
+              animate={{ opacity: 1, width: 280 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="h-2 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 rounded-full overflow-hidden"
             >
               <motion.div
                 animate={{ x: [-200, 200] }}
